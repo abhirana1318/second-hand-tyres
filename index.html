@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Second Hand Tyres Store</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+    }
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Second Hand Tyres</h1>
+
+<div id="products"></div>
+
+<script>
+const products = [
+  { name: "Used Tyre - 14 inch", price: 1200 },
+  { name: "Used Tyre - 15 inch", price: 1500 },
+  { name: "Used Tyre - 17 inch", price: 2000 }
+];
+
+const container = document.getElementById("products");
+
+products.forEach(p => {
+  const div = document.createElement("div");
+  div.className = "product";
+  div.innerHTML = `
+    <h3>${p.name}</h3>
+    <p>Price: ₹${p.price}</p>
+    <button onclick="buy('${p.name}')">Buy</button>
+  `;
+  container.appendChild(div);
+});
+
+function buy(product) {
+  alert(product + " added to cart!");
+}
+</script>
+
+</body>
+</html>
