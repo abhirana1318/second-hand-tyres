@@ -1,48 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Second Hand Tyres Store</title>
+  <title>Tyre Store</title>
   <style>
     body {
       font-family: Arial;
+      margin: 0;
+      background: #f5f5f5;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 15px;
+      font-size: 24px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      width: 220px;
+      margin: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       text-align: center;
     }
-    .product {
-      border: 1px solid #ccc;
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    button {
+      background: green;
+      color: white;
+      border: none;
       padding: 10px;
-      margin: 10px;
-      display: inline-block;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: darkgreen;
     }
   </style>
 </head>
+
 <body>
 
-<h1>Second Hand Tyres</h1>
+<header>🚗 Second Hand Tyres Store</header>
 
-<div id="products"></div>
+<div class="container" id="products"></div>
 
 <script>
 const products = [
-  { name: "Used Tyre - 14 inch", price: 1200 },
-  { name: "Used Tyre - 15 inch", price: 1500 },
-  { name: "Used Tyre - 17 inch", price: 2000 }
+  {
+    name: "Used Tyre 14 inch",
+    price: 1200,
+    img: "https://via.placeholder.com/200"
+  },
+  {
+    name: "Used Tyre 15 inch",
+    price: 1500,
+    img: "https://via.placeholder.com/200"
+  },
+  {
+    name: "Used Tyre 17 inch",
+    price: 2000,
+    img: "https://via.placeholder.com/200"
+  }
 ];
 
 const container = document.getElementById("products");
 
 products.forEach(p => {
   const div = document.createElement("div");
-  div.className = "product";
+  div.className = "card";
+
   div.innerHTML = `
+    <img src="${p.img}">
     <h3>${p.name}</h3>
-    <p>Price: ₹${p.price}</p>
-    <button onclick="buy('${p.name}')">Buy</button>
+    <p>₹${p.price}</p>
+    <button onclick="order('${p.name}')">Order Now</button>
   `;
+
   container.appendChild(div);
 });
 
-function buy(product) {
-  alert(product + " added to cart!");
+function order(product) {
+  window.open("https://wa.me/91XXXXXXXXXX?text=I want to buy " + product);
 }
 </script>
 
